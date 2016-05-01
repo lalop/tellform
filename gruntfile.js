@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js', '!app/tests/'],
 		clientViews: ['public/modules/**/views/**/*.html'],
-		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
+		clientJS: ['public/js/*.js', 'public/modules/**/*.js', '!public/modules/**/gruntfile.js'],
 		clientCSS: ['public/modules/**/*.css'],
 		serverTests: ['app/tests/**/*.js'],
 		clientTests: ['public/modules/**/tests/*.js'],
@@ -83,67 +83,67 @@ module.exports = function(grunt) {
 				},
 				all: {
 				src: watchFiles.clientCSS
-	}
-	},
-uglify: {
-production: {
-options: {
-mangle: false
-	 },
-files: {
-	       'public/dist/application.min.js': 'public/dist/application.js'
-       }
-	    }
-	},
-cssmin: {
-combine: {
-files: {
-	       'public/dist/application.min.css': '<%= applicationCSSFiles %>'
-       }
-	 }
-	},
-nodemon: {
-dev: {
-script: 'server.js',
-	options: {
-nodeArgs: ['--debug'],
-	  ext: 'js,html',
-	  watch: watchFiles.serverViews.concat(watchFiles.serverJS)
-	}
-     }
-	 },
-	 'node-inspector': {
-custom: {
-options: {
-		 'web-port': 1337,
-		 'web-host': 'localhost',
-		 'debug-port': 5858,
-		 'save-live-edit': true,
-		 'no-preload': true,
-		 'stack-trace-limit': 50,
-		 'hidden': []
-	 }
-	}
-	 },
-ngAnnotate: {
-production: {
-files: {
-	       'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
-       }
-	    }
+			}
+		},
+		uglify: {
+			production: {
+				options: {
+					mangle: false
+				},
+				files: {
+					'public/dist/application.min.js': 'public/dist/application.js'
+				}
+	    	}
+		},
+		cssmin: {
+			combine: {
+				files: {
+					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
+				}
+			}
+		},
+		nodemon: {
+			dev: {
+				script: 'server.js',
+				options: {
+					nodeArgs: ['--debug'],
+					ext: 'js,html',
+					watch: watchFiles.serverViews.concat(watchFiles.serverJS)
+				}
+			}
+		},
+		'node-inspector': {
+			custom: {
+				options: {
+					'web-port': 1337,
+					'web-host': 'localhost',
+					'debug-port': 5858,
+					'save-live-edit': true,
+					'no-preload': true,
+					'stack-trace-limit': 50,
+					'hidden': []
+				}
+			}
+		},
+		ngAnnotate: {
+			production: {
+				files: {
+					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+    			}
+	    	}
 	    },
-concurrent: {
+		concurrent: {
 		    default: ['nodemon', 'watch'],
-debug: ['nodemon', 'watch', 'node-inspector'],
-	       options: {
-logConcurrentOutput: true,
-		     limit: 10
-	       }
+			debug: ['nodemon', 'watch', 'node-inspector'],
+			options: {
+				logConcurrentOutput: true,
+		    	limit: 10
+	    	}
 	    },
-env: {
-test: {
-NODE_ENV: 'test',
-		  src: '.env'
+		env: {
+			test: {
+				NODE_ENV: 'test',
+				src: '.env'
 			},
 			secure: {
 				NODE_ENV: 'secure',
