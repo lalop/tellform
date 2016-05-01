@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js', '!app/tests/'],
 		clientViews: ['public/modules/**/views/**/*.html'],
-		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
+		clientJS: ['public/js/*.js', 'public/modules/**/*.js', '!public/modules/**/gruntfile.js'],
 		clientCSS: ['public/modules/**/*.css'],
 		serverTests: ['app/tests/**/*.js'],
 		clientTests: ['public/modules/**/tests/*.js'],
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 				files: {
 					'public/dist/application.min.js': 'public/dist/application.js'
 				}
-			}
+	    	}
 		},
 		cssmin: {
 			combine: {
@@ -125,12 +125,17 @@ module.exports = function(grunt) {
 					'stack-trace-limit': 50,
 					'hidden': []
 				}
+<<<<<<< 2336dfe8c0366fd7b4c92720bc09cc580563d6cb
 			 }
+=======
+			}
+>>>>>>> exclude form gruntfile from build
 		},
 		ngAnnotate: {
 			production: {
 				files: {
 					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+<<<<<<< 2336dfe8c0366fd7b4c92720bc09cc580563d6cb
 				}
 			}
 		},
@@ -141,6 +146,18 @@ module.exports = function(grunt) {
 				logConcurrentOutput: true,
 		     	limit: 10
 	       	}
+=======
+    			}
+	    	}
+	    },
+		concurrent: {
+		    default: ['nodemon', 'watch'],
+			debug: ['nodemon', 'watch', 'node-inspector'],
+			options: {
+				logConcurrentOutput: true,
+		    	limit: 10
+	    	}
+>>>>>>> exclude form gruntfile from build
 	    },
 		env: {
 			test: {
