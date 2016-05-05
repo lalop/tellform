@@ -31,7 +31,7 @@ var fs = require('fs-extra'),
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
-	
+
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
 		require(path.resolve(modelPath));
@@ -52,7 +52,7 @@ module.exports = function(db) {
 
     //Setup Prerender.io
     app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
-        
+
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
 		if(config.baseUrl === ''){
@@ -107,7 +107,7 @@ module.exports = function(db) {
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
 
-	
+
 	// Setting the app router and static folder
 	app.use('/', express.static(path.resolve('./public')));
 	app.use('/uploads', express.static(path.resolve('./uploads')));
@@ -116,18 +116,8 @@ module.exports = function(db) {
 	app.use(cookieParser());
 
 	// Express MongoDB session storage
-	app.use(session({
-		saveUninitialized: true,
-		resave: true,
-		secret: config.sessionSecret,
-		store: new MongoStore({
-	      mongooseConnection: db.connection,
-	      collection: config.sessionCollection
-	    }),
-		cookie: config.sessionCookie,
-		name: config.sessionName
-	}));
-	
+	app.use(session({secret: 'test'}));
+
 	// use passport session
 	app.use(passport.initialize());
 	app.use(passport.session());
@@ -143,7 +133,7 @@ module.exports = function(db) {
 		require(path.resolve(routePath))(app);
 	});
 
-	
+
 	// Add headers for Sentry
 	/*
 	app.use(function (req, res, next) {
