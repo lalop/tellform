@@ -1,6 +1,6 @@
 <div class="field row" ng-if="form.autofillPDFs" ng-click="setActiveField(field._id, index, true)">
     <div class="col-sm-4 field-title">
-        <h5>{{field.title}}     <span class="required-error" ng-show="field.required && field.fieldValue == 0">(* required)</span></h5>
+        <h5>{{field.title}}     <span class="required-error" ng-show="field.required && field.fieldValue == 0">(* {{ 'REQUIRED' | translate }})</span></h5>
     </div>
     <div class="col-sm-8 field-input">
         <div class="input-group ">
@@ -12,18 +12,18 @@
             </div>
             <div class="input-group-btn">
                 <button type="button"  ng-if="field.file" ng-click="removeFile(field);" title="Clear selected files" class="btn btn-danger fileinput-remove fileinput-remove-button">
-                    <i class="glyphicon glyphicon-trash"  ></i> 
-                    Delete
+                    <i class="glyphicon glyphicon-trash"  ></i>
+                    {{ 'DELETE' | translate }}
                 </button>
 
                 <button type="button" ng-if="field.fileLoading" title="Abort ongoing upload" class="btn btn-default" ng-click="cancelFileUpload(field)">
-                    <i class="glyphicon glyphicon-ban-circle"></i> 
-                    Cancel
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    {{ 'CANCEL' | translate }}
                 </button>
 
-                <div class="btn btn-success btn-file" ngf-select ngf-change="uploadPDF($files)" ng-if="!field.file"> 
+                <div class="btn btn-success btn-file" ngf-select ngf-change="uploadPDF($files)" ng-if="!field.file">
                     <i class="glyphicon glyphicon-upload"></i>
-                    Upload your File
+                    {{ UPLOAD_FILE | translate }}
                 </div>
             </div>
         </div>
