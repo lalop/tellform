@@ -122,9 +122,18 @@ angular.module('forms').directive('submitFormDirective',
                 };
 
                 $rootScope.nextField = $scope.nextField = function(){
-                    //console.log('nextfield');
-                    //console.log($scope.selected.index);
-					//console.log($scope.myform.form_fields.length-1);
+
+					angular.forEach($scope.myform.form_fields, function(field) {
+						console.log(field);
+						if(field.fieldLogic) {
+							try{
+								eval(field.fieldLogic);
+							} catch(e) {
+								console.log('error in logicJump', e);
+							}
+						}
+					});
+
 					if($scope.selected.index < $scope.myform.form_fields.length-1){
                         var selected_index = $scope.selected.index+1;
                         var selected_id = $scope.myform.form_fields[selected_index]._id;

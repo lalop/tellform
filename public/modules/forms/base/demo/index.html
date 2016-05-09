@@ -89,6 +89,28 @@
 			},
 			"submissions":[],
 			"form_fields":[{
+				"title": "Yes/no",
+				"fieldType":"yes_no",
+				"fieldValue":"",
+				"_id":"57278342701004bec4e",
+				"deletePreserved":false,
+				"disabled":false,
+				"required":true,
+				"fieldOptions":[],
+				"description":"",
+				'fieldLogic': "if(field.fieldValue === 'true') $scope.myform.form_fields = $scope.myform.visible_form_fields = field.logicFields",
+				'logicFields': [{
+					"title": "Yes/nope",
+					"fieldType":"yes_no",
+					"fieldValue":"",
+					"_id":"57272701004bec4e",
+					"deletePreserved":false,
+					"disabled":false,
+					"required":true,
+					"fieldOptions":[],
+					"description":""
+				}]
+			},{
 				"title": "Short Text2",
 				"fieldType":"textfield",
 				"fieldValue":"",
