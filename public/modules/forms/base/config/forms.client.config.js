@@ -17,7 +17,7 @@ angular.module('forms')
 			var fields = formObj.form_fields;
 
 			var valid_count = fields.filter(function(field){
-				if(typeof field === 'object' && field.fieldType !== 'statement' && field.fieldType !== 'rating'){
+				if(typeof field === 'object' && field.fieldType !== 'statement' && field.fieldType !== 'rating' && field.fieldType !== 'ratings'){
 					return !!(field.fieldValue);
 				}
 
@@ -39,6 +39,7 @@ angular.module('forms').value('supportedFields', [
 	'legal',
 	'statement',
 	'rating',
+	'ratings',
 	'yes_no',
 	'number',
 	'natural',
