@@ -70,12 +70,12 @@ ng-disabled="loading || forms.myForm.$invalid"
 ng-click="submitForm()"
 ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}"
 style="font-size: 1.6em; margin-left: 1em; margin-top: 1em;">
-Submit
+{{ 'SUBMIT' | translate }}
 </button>
 
 <div class="col-sm-2 col-xs-6" style="font-size: 75%; margin-top:2.5em">
 <small>
-press ENTER
+{{ 'ENTER' | translate }}
 </small>
 </div>
 </div>
