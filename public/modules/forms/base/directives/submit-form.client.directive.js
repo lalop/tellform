@@ -28,7 +28,11 @@ angular.module('forms').directive('submitFormDirective',
                     //Reset Form
                     $scope.myform.submitted = false;
                     $scope.myform.form_fields = _.chain($scope.myform.visible_form_fields).map(function(field){
-                            field.fieldValue = '';
+							if(field.fieldType === 'checkbox') {
+								field.fieldValue = {};
+							} else {
+                            	field.fieldValue = '';
+							}
                             return field;
                         }).value();
 
@@ -116,6 +120,10 @@ angular.module('forms').directive('submitFormDirective',
                         }, 20);
                     }
                 };
+
+				$scope.checkBoxChange = function(option_index) {
+					console.log($scope.selected.fieldValue);
+				}
 
                 $rootScope.nextField = $scope.nextField = function(){
                     //console.log('nextfield');

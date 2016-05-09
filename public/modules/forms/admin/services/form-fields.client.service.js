@@ -17,6 +17,10 @@ angular.module('forms').service('FormFields', [
 		        value : 'Multiple Choice'
 		    },
 		    {
+		        name : 'checkbox',
+		        value : 'Multiple Choice 2'
+		    },
+		    {
 		        name : 'dropdown',
 		        value : 'Dropdown'
 		    },
@@ -62,13 +66,13 @@ angular.module('forms').service('FormFields', [
 		    // },
 		    // {
 		    //     name : 'stripe',
-		    //     value : 'Payment' 
+		    //     value : 'Payment'
 		    // },
 		    {
 		        name : 'statement',
-		        value : 'Statement' 
+		        value : 'Statement'
 		    }
 		];
 	}
-		
+
 ]);

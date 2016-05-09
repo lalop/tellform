@@ -41,5 +41,6 @@ angular.module('forms').value('supportedFields', [
 	'rating',
 	'yes_no',
 	'number',
-	'natural'
+	'natural',
+	'checkbox'
 ]);
