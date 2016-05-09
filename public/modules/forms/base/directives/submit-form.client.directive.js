@@ -13,23 +13,27 @@ angular.module('forms').directive('submitFormDirective',
 		        $scope.noscroll = false;
                 $scope.forms = {};
 
-				var form_fields_count = $scope.myform.visible_form_fields.filter(function(field){
-                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
-                        return false;
-                    }
-                    return true;
-                }).length;
-				$scope.translateAdvancementData = {
-					done: $filter('formValidity')($scope.myform),
-					total: form_fields_count
-				};
+				function computeAdvancement() {
+					$scope.translateAdvancementData = {
+						done: $filter('formValidity')($scope.myform),
+						total: $scope.myform.visible_form_fields.filter(function(field){
+		                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
+		                        return false;
+		                    }
+		                    return true;
+		                }).length
+					};
+				}
+
+				computeAdvancement();
+
 
                 $scope.reloadForm = function(){
                     //Reset Form
                     $scope.myform.submitted = false;
                     $scope.myform.form_fields = _.chain($scope.myform.visible_form_fields).map(function(field){
 							if(field.fieldType === 'checkbox' || field.fieldType === 'ratings') {
-								field.fieldValue = {};
+								field.fieldValue = '';
 							} else {
                             	field.fieldValue = '';
 							}
@@ -105,10 +109,7 @@ angular.module('forms').directive('submitFormDirective',
                     $scope.selected._id = field_id;
                     $scope.selected.index = field_index;
 
-					$scope.translateAdvancementData = {
-						done: $filter('formValidity')($scope.myform),
-						total: form_fields_count
-					};
+					computeAdvancement();
 
                     if(animateScroll){
                         $scope.noscroll=true;
@@ -123,16 +124,16 @@ angular.module('forms').directive('submitFormDirective',
 
                 $rootScope.nextField = $scope.nextField = function(){
 
-					angular.forEach($scope.myform.form_fields, function(field) {
-						console.log(field);
-						if(field.fieldLogic) {
+					if($scope.myform.form_fields[$scope.selected.index].fieldLogic) {
+						(function(field) {
 							try{
 								eval(field.fieldLogic);
+								computeAdvancement();
 							} catch(e) {
 								console.log('error in logicJump', e);
 							}
-						}
-					});
+						})($scope.myform.form_fields[$scope.selected.index].fieldLogic);
+					}
 
 					if($scope.selected.index < $scope.myform.form_fields.length-1){
                         var selected_index = $scope.selected.index+1;

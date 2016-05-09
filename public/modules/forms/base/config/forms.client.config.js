@@ -17,10 +17,9 @@ angular.module('forms')
 			var fields = formObj.form_fields;
 
 			var valid_count = fields.filter(function(field){
-				if(typeof field === 'object' && field.fieldType !== 'statement' && field.fieldType !== 'rating' && field.fieldType !== 'ratings'){
+				if(typeof field === 'object' && field.fieldType !== 'statement' && field.fieldType !== 'rating'){
 					return !!(field.fieldValue);
 				}
-
 			}).length;
 			return valid_count - (formObj.form_fields.length - formObj.visible_form_fields.length);
 		}
