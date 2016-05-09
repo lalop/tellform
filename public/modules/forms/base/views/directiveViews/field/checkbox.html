@@ -13,9 +13,8 @@
                     ng-class="{activeBtn: field.fieldValue.indexOf(option.option_value) > -1 }">
                 <input ng-style="{'color': design.colors.answerColor, 'border-color': design.colors.answerColor}"
                     type="checkbox" class="focusOn"
-                    value="{{option.option_value}}"
+					value="{{option.option_value}}"
 					ng-model="field.fieldValue[option.option_id]"
-                    ng-required="field.required"
                     ng-disabled="field.disabled"
 		        	ng-focus="setActiveField(field._id, index, true)">
 
