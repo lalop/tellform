@@ -87,19 +87,6 @@ style="font-size: 1.6em; margin-left: 1em; margin-top: 1em;">
                         <p class="lead">{{ 'ADVANCEMENT' | translate:translateAdvancementData }}</p>
                 </div>
                 <div class="col-md-6 col-md-offset-0 col-sm-offset-2 col-sm-3 col-xs-offset-1 col-xs-6 row">
-                    <div class="col-md-4 col-md-offset-2 hidden-sm hidden-xs" ng-if="!authentication.isAuthenticated()">
-                        <a href="/#!/forms" class="btn"
-                            ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}">
-                            {{ 'CREATE_FORM' | translate }}
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-md-offset-2 hidden-sm hidden-xs" ng-if="authentication.isAuthenticated()">
-                        <a href="/#!/forms/{{myform._id}}/admin/create"
-                            ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}"
-                            class="btn">
-                            {{ 'EDIT_FORM' | translate }}
-                        </a>
-                    </div>
                     <div class="col-md-4 col-sm-10 col-md-offset-0 col-sm-offset-2 col-xs-12">
                         <button class="btn btn-lg" id="focusDownButton"
 				            ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}"
@@ -129,13 +116,5 @@ style="font-size: 1.6em; margin-left: 1em; margin-top: 1em;">
         <div class="col-xs-6 col-xs-offset-3 text-center">
 			{{ 'FORM_SUCCESS' | translate }}
 		</div>
-    </div>
-    <div class="row form-actions">
-        <p class="text-center col-xs-4 col-xs-offset-4">
-            <button ng-click="reloadForm()" class="btn" type="button"
-                ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}">
-                <span style="font-size: 1.6em;"> {{ 'BACK_TO_FORM' | translate }}</span>
-            </button>
-        </p>
     </div>
 </div>
