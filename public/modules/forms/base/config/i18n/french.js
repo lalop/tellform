@@ -22,7 +22,11 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	DELETE: 'Supprimer',
 	CANCEL: 'Réinitialiser',
 	UPLOAD_FILE: 'Envoyer des fichier',
-	SUBMIT: 'Enregistrer'
+	SUBMIT: 'Enregistrer',
+	Y: 'O',
+	N: 'N',
+	YES: 'OUI',
+	NO: 'Non'
   });
 
 }]);

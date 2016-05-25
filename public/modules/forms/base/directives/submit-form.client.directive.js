@@ -132,7 +132,7 @@ angular.module('forms').directive('submitFormDirective',
 							} catch(e) {
 								console.log('error in logicJump', e);
 							}
-						})($scope.myform.form_fields[$scope.selected.index].fieldLogic);
+						})($scope.myform.form_fields[$scope.selected.index]);
 					}
 
 					if($scope.selected.index < $scope.myform.form_fields.length-1){
