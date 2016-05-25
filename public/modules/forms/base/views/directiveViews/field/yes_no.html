@@ -26,9 +26,9 @@
 					ng-change="$root.nextField()"
                     ng-disabled="field.disabled" />
 				<div class="letter">
-					Y
+					{{ 'Y' | translate }}
 				</div>
-				<span>Yes</span>
+				<span>{{ 'YES' | translate }}</span>
 				<i ng-show="field.fieldValue === 'true'" class="fa fa-check" aria-hidden="true"></i>
             </label>
 	</div>
@@ -47,9 +47,9 @@
                     ng-disabled="field.disabled"/>
 
 			<div class="letter">
-				N
+				{{ 'N' | translate }}
 			</div>
-			<span>No</span>
+			<span>{{ 'NO' | translate }}</span>
                 	<i ng-show="field.fieldValue === 'false'" class="fa fa-check" aria-hidden="true"></i>
             </label>
         </div>

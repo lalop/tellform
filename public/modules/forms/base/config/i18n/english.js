@@ -22,7 +22,11 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	DELETE: 'Delete',
 	CANCEL: 'Cancel',
 	UPLOAD_FILE: 'Upload your File',
-	SUBMIT: 'Submit'
+	SUBMIT: 'Submit',
+	Y: 'Y',
+	N: 'N',
+	YES: 'Yes',
+	NO: 'No'
   });
 
   $translateProvider.preferredLanguage('english')
