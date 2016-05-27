@@ -116,7 +116,17 @@ module.exports = function(db) {
 	app.use(cookieParser());
 
 	// Express MongoDB session storage
-	app.use(session({secret: 'test'}));
+	app.use(session({
+		saveUninitialized: true,
+		resave: true,
+		secret: config.sessionSecret,
+		store: new MongoStore({
+	      mongooseConnection: db.connection,
+	      collection: config.sessionCollection
+	    }),
+		cookie: config.sessionCookie,
+		name: config.sessionName
+	}));
 
 	// use passport session
 	app.use(passport.initialize());

@@ -235,26 +235,31 @@ module.exports = function(grunt) {
             }
           }
         },
-        html2js: {
-		  options: {
-		    base: 'public',
-		    watch: true,
-			module: 'NodeForm.templates',
-		    singleModule: true,
-		    useStrict: true,
-		    htmlmin: {
-		      collapseBooleanAttributes: true,
-		      collapseWhitespace: true,
-		      removeAttributeQuotes: true,
-		      removeComments: true,
-		      removeEmptyAttributes: true,
-		      removeRedundantAttributes: true
-		    }
-		  },
-		  main: {
-		    src: ['public/modules/**/views/**.html', 'public/modules/**/views/**/*.html'],
-		    dest: 'public/dist/populate_template_cache.js'
-		  }
+		html2js: {
+			options: {
+				base: 'public',
+				watch: true,
+				module: 'NodeForm.templates',
+				singleModule: true,
+				useStrict: true,
+				htmlmin: {
+					collapseBooleanAttributes: true,
+					collapseWhitespace: true,
+					removeAttributeQuotes: true,
+					removeComments: true,
+					removeEmptyAttributes: true,
+					removeRedundantAttributes: true
+				}
+			},
+			main: {
+				src: ['public/modules/**/views/**.html', 'public/modules/**/views/**/*.html'],
+				dest: 'public/dist/populate_template_cache.js'
+			}
+		},
+		execute: {
+			target: {
+				src: ['./scripts/setup.js']
+			}
 		}
 	});
 

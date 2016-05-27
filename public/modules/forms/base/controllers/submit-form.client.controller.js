@@ -9,6 +9,8 @@ angular.module('forms').controller('SubmitFormController', [
 		console.log(myForm);
 		$translate.use(myForm.language);
 
+		$translate.use(myForm.language);
+
 		if(!$scope.myform.isLive){
 			// Show navbar if form is not public AND user IS loggedin
 			if($scope.authentication.isAuthenticated()){

@@ -10,15 +10,21 @@ Current stable release: v1.3.0
 TellForm is an *opensource alternative to TypeForm* built ontop of nodejs that can create stunning forms from PDFs or from scratch
 
 ##Demo Forms
-[Job Application Example](https://stage.tellform.com/#!/forms/571a76b856d64f9e4ca73ca1) 
+[Job Application Example](https://stage.tellform.com/#!/forms/571a76b856d64f9e4ca73ca1)
 
 [Contact Form Example](https://stage.tellform.com/#!/forms/57196d592601ed12074eecc0)
 
-## Features	
+[Patient Registration Example](https://stage.tellform.com/#!/forms/573f8329d18419854559c29c)
+
+##Screenshots
+![screenshot](design/screenshots/tellform_screenshot1.png)
+
+
+## Features
 
 ###Currently following features are implemented:
 	-User login system to manage forms
-	-User CRUD 
+	-User CRUD
 	-Form CRUD
 	-11 possible types of form fields
 	-Editable startpage
@@ -132,7 +138,30 @@ $ sh ./scripts/generate-ssl-certs.sh
 Windows users can follow instructions found [here](http://www.websense.com/support/article/kbarticle/How-to-use-OpenSSL-and-Microsoft-Certification-Authority).
 After you've generated the key and certificate, place them in the *config/sslcerts* folder.
 
+## Where to get help
+
+[Gitter Chat](https://gitter.im/whitef0x0/tellform)
+
+[Official Twitter](https://twitter.com/tellform_real)
+
+## Contributor list
+
+[David Baldwynn](https://github.com/whitef0x0/)
+
+[Samuel Laulhau](https://github.com/lalop)
+
+
+## Mentions on the Web
+
+[t3n.de](http://t3n.de/news/open-source-alternative-typeform-tellform-707295/)
+
+[BootCSS Expo](http://expo.bootcss.com/)
+
+[Product Hunt](https://www.producthunt.com/tech/tellform)
+
+[Hacker News Post](https://news.ycombinator.com/item?id=11711095)
+
+[Reddit Posts](https://www.reddit.com/domain/tellform.com/)
 
 ## Credits
-Inspired/built off the great work of the [MeanJS team](https://github.com/mean/).
-
+Inspired/built off the great work of the [MeanJS team](https://github.com/mean/) and [Typeform](http://typeform.com)
