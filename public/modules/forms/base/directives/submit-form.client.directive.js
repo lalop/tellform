@@ -14,31 +14,23 @@ angular.module('forms').directive('submitFormDirective',
                 $scope.forms = {};
 
 				function computeAdvancement() {
+					var form_fields_count = $scope.myform.visible_form_fields.filter(function(field){
+	                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
+	                        return false;
+	                    }
+	                    return true;
+	                }).length;
+
+					var nb_valid = $filter('formValidity')($scope.myform);
 					$scope.translateAdvancementData = {
-						done: $filter('formValidity')($scope.myform),
-						total: $scope.myform.visible_form_fields.filter(function(field){
-		                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
-		                        return false;
-		                    }
-		                    return true;
-		                }).length
+						done: nb_valid,
+						total: form_fields_count,
+						answers_not_completed: form_fields_count - nb_valid
 					};
 				}
 
 				computeAdvancement();
-				var form_fields_count = $scope.myform.visible_form_fields.filter(function(field){
-                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
-                        return false;
-                    }
-                    return true;
-                }).length;
 
-				var nb_valid = $filter('formValidity')($scope.myform);
-				$scope.translateAdvancementData = {
-					done: nb_valid,
-					total: form_fields_count,
-					answers_not_completed: form_fields_count - nb_valid
-				};
 
                 $scope.reloadForm = function(){
                     //Reset Form
@@ -126,13 +118,6 @@ angular.module('forms').directive('submitFormDirective',
                     $scope.selected.index = field_index;
 
 					computeAdvancement();
-					var nb_valid = $filter('formValidity')($scope.myform);
-					$scope.translateAdvancementData = {
-						done: nb_valid,
-						total: form_fields_count,
-						answers_not_completed: form_fields_count - nb_valid
-					};
-
 
                     if(animateScroll){
                         $scope.noscroll=true;
@@ -158,39 +143,6 @@ angular.module('forms').directive('submitFormDirective',
 						})($scope.myform.form_fields[$scope.selected.index]);
 					}
 
-					if($scope.selected.index < $scope.myform.form_fields.length-1){
-                        var selected_index = $scope.selected.index+1;
-                        var selected_id = $scope.myform.form_fields[selected_index]._id;
-                        $rootScope.setActiveField(selected_id, selected_index, true);
-                    } else if($scope.selected.index === $scope.myform.form_fields.length-1) {
-						var selected_index = $scope.selected.index+1;
-						var selected_id = 'submit_field';
-
-                        $document.scrollToElement(angular.element('.activeField'), -10, 200).then(function() {
-							$scope.noscroll = false;
-							setTimeout(function() {
-								if (document.querySelectorAll('.activeField .focusOn')[0]) {
-									//console.log(document.querySelectorAll('.activeField .focusOn')[0]);
-									document.querySelectorAll('.activeField .focusOn')[0].focus();
-								} else {
-									//console.log(document.querySelectorAll('.activeField input')[0]);
-									document.querySelectorAll('.activeField input')[0].focus();
-								}
-							});
-                        });
-                    }else {
-						setTimeout(function() {
-							if (document.querySelectorAll('.activeField .focusOn')[0]) {
-								//console.log(document.querySelectorAll('.activeField .focusOn')[0]);
-								document.querySelectorAll('.activeField .focusOn')[0].focus();
-							} else {
-								document.querySelectorAll('.activeField input')[0].focus();
-							}
-						});
-					}
-                };
-
-                $rootScope.nextField = $scope.nextField = function(){
                     //console.log('nextfield');
                     //console.log($scope.selected.index);
 					//console.log($scope.myform.visible_form_fields.length-1);
