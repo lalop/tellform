@@ -3,8 +3,12 @@
 	 ng-if="field.fieldOptions.length > 0"
 	 on-enter-key="chooseDefaultOption()">
     <div class="col-xs-12 field-title" ng-style="{'color': design.colors.questionColor}">
-		<h3><span class="fa fa-angle-double-right"></span> {{field.title}} <span class="required-error" ng-show="!field.required">{{ 'OPTIONAL' | translate }}</span>
-		</h3>
+		<small class="field-number">
+			{{index+1}}
+			<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+		</small>
+		{{field.title}}
+		<span class="required-error" ng-show="!field.required && !field.fieldValue">{{ 'OPTIONAL' | translate }}</span>
 	</div>
     <div class="col-xs-12 field-input">
         <div ng-repeat="option in field.fieldOptions">
