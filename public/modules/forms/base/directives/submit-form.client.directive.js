@@ -13,19 +13,23 @@ angular.module('forms').directive('submitFormDirective',
 		        $scope.noscroll = false;
                 $scope.forms = {};
 
-				var form_fields_count = $scope.myform.visible_form_fields.filter(function(field){
-                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
-                        return false;
-                    }
-                    return true;
-                }).length;
+				function computeAdvancement() {
+					var form_fields_count = $scope.myform.visible_form_fields.filter(function(field){
+	                    if(field.fieldType === 'statement' || field.fieldType === 'rating'){
+	                        return false;
+	                    }
+	                    return true;
+	                }).length;
 
-				var nb_valid = $filter('formValidity')($scope.myform);
-				$scope.translateAdvancementData = {
-					done: nb_valid,
-					total: form_fields_count,
-					answers_not_completed: form_fields_count - nb_valid
-				};
+					var nb_valid = $filter('formValidity')($scope.myform);
+					$scope.translateAdvancementData = {
+						done: nb_valid,
+						total: form_fields_count,
+						answers_not_completed: form_fields_count - nb_valid
+					};
+				}
+
+				computeAdvancement();
 
                 $scope.reloadForm = function(){
                     //Reset Form
@@ -112,12 +116,7 @@ angular.module('forms').directive('submitFormDirective',
                     $scope.selected._id = field_id;
                     $scope.selected.index = field_index;
 
-					var nb_valid = $filter('formValidity')($scope.myform);
-					$scope.translateAdvancementData = {
-						done: nb_valid,
-						total: form_fields_count,
-						answers_not_completed: form_fields_count - nb_valid
-					};
+					computeAdvancement();
 
                     if(animateScroll){
                         $scope.noscroll=true;
