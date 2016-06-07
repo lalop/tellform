@@ -33,7 +33,9 @@ TellForm is an *opensource alternative to TypeForm* built ontop of nodejs that c
 	-Save form submissions as FDF-formatted PDFs (unstable)
 	-Toggle forms as private (viewable only if logged in as Form's user) or public (viewable by anyone)
 	-Drag and drop functionality to editing form field order
-	-Editable form submissions (half-done)
+	-Viewable form submissions
+	-Google Analytics Support
+	-In-app Analytics (dropoff rate of fields, conversion rate, etc)
 
 ###TODO:
 	-Implement encryption for all form data
@@ -41,12 +43,13 @@ TellForm is an *opensource alternative to TypeForm* built ontop of nodejs that c
 	-Add Typeform API integration
 	-Add plugin/3rd party integration support (ala Slack)
 	-Create wiki for easy installation and setup
-	-Create mockups for different user view designs
 
 
 
 
 ## Quickstart
+
+Before you start, make sure you have Redis installed and running at 127.0.0.1:6379
 
 Install dependencies first.
 ```bash
@@ -150,6 +153,7 @@ After you've generated the key and certificate, place them in the *config/sslcer
 
 [Samuel Laulhau](https://github.com/lalop)
 
+[Arun Pattnaik](https://github.com/arunpattnaik)
 
 ## Mentions on the Web
 

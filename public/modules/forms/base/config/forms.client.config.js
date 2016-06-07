@@ -39,9 +39,9 @@ angular.module('forms').value('supportedFields', [
 	'legal',
 	'statement',
 	'rating',
-	'ratings',
 	'yes_no',
 	'number',
 	'natural',
+	'ratings',
 	'checkbox'
 ]);
