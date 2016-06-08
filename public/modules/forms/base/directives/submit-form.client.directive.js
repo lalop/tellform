@@ -31,13 +31,6 @@ angular.module('forms').directive('submitFormDirective',
 
 				computeAdvancement();
 
-				var nb_valid = $filter('formValidity')($scope.myform);
-				$scope.translateAdvancementData = {
-					done: nb_valid,
-					total: form_fields_count,
-					answers_not_completed: form_fields_count - nb_valid
-				};
-
                 $scope.reloadForm = function(){
                     //Reset Form
                     $scope.myform.submitted = false;

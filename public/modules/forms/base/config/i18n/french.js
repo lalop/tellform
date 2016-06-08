@@ -14,7 +14,7 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	COMPLETING_NEEDED: '{{answers_not_completed}} réponse(s) doive(nt) être complétée(s)',
 	OPTIONAL: 'facultatif',
 	ERROR_EMAIL_INVALID: 'Merci de rentrer une adresse mail valide',
-	ERROR_NOT_A_NUMBER: 'Merce de ne rentrer que des nombres',
+	ERROR_NOT_A_NUMBER: 'La réponse doit être un nombre positif',
 	ERROR_URL_INVALID: 'Merci de rentrer une url valide',
 	OK: 'OK',
 	ENTER: 'presser ENTRÉE',
