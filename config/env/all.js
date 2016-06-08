@@ -7,7 +7,9 @@ module.exports = {
 		description: 'Opensource form builder alternative to TypeForm',
 		keywords: 'typeform, pdfs, forms, opensource, formbuilder, google forms, nodejs',
 	},
-	port: process.env.PORT || 3000,
+	port: process.env.PORT || 5000,
+	socketPort: process.env.SOCKET_PORT || 35729,
+
 	templateEngine: 'swig',
 
     signupDisabled: process.env.SIGNUP_DISABLED || false,

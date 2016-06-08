@@ -14,7 +14,7 @@
 	</div>
     <div class="col-xs-12 field-input">
         <div ng-repeat="option in field.fieldOptions" class="row-fluid">
-            <label class="btn col-xs-4"
+            <label class="btn"
                     style="margin: 0.5em; padding-left:30px"
                     ng-class="{activeBtn: field.fieldValue.indexOf(option.option_value) > -1 }">
                 <input ng-style="{'color': design.colors.answerColor, 'border-color': design.colors.answerColor}"
@@ -24,7 +24,7 @@
                     ng-disabled="field.disabled"
 		        	ng-focus="setActiveField(field._id, index, true)">
 
-                <span ng-bind="option.option_value"></span>
+                <span ng-bind="option.option_value" style="white-space: normal"></span>
             </label>
         </div>
     </div>

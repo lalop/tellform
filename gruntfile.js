@@ -139,7 +139,11 @@ module.exports = function(grunt) {
 		concurrent: {
 		    default: ['nodemon', 'watch'],
 			debug: ['nodemon', 'watch', 'node-inspector'],
+<<<<<<< HEAD
 			options: {
+=======
+	    	options: {
+>>>>>>> admin-form
 				logConcurrentOutput: true,
 		    	limit: 10
 	    	}

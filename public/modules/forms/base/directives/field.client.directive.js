@@ -24,7 +24,7 @@ angular.module('forms').directive('fieldDirective', ['$http', '$compile', '$root
     return {
         template: '<div>{{field.title}}</div>',
         restrict: 'E',
-        scope: {
+		scope: {
             field: '=',
             required: '&',
             design: '=',
@@ -85,7 +85,7 @@ angular.module('forms').directive('fieldDirective', ['$http', '$compile', '$root
 			}
             var template = getTemplateUrl(fieldType);
            	element.html(template).show();
-            $compile(element.contents())(scope);
+            var output = $compile(element.contents())(scope);
         }
     };
 }]);
