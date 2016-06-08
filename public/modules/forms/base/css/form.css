@@ -5,10 +5,10 @@
 }
 
 .busy-updating-wrapper {
-   text-align: center; 
+   text-align: center;
    font-size: 20px;
-   position: fixed; 
-   bottom: 0; 
+   position: fixed;
+   bottom: 0;
    right: 55px;
    z-index: 1;
 }
@@ -73,7 +73,7 @@ section.content > section > section.container {
 }
 
 /*
-** Modal CSS Styles 
+** Modal CSS Styles
 */
 .modal-header {
     padding: 15px;
@@ -113,7 +113,6 @@ section.content > section > section.container {
 
 div.form-fields {
 	position: relative;
-	padding-top: 35vh;
 }
 .letter {
 	position: relative;
@@ -228,7 +227,7 @@ form .row.field {
 		border-width: 0 0 2px 0;
 		border-radius: 5px;
     }
-	
+
 	form .row.field.dropdown > .field-input input:focus {
 		border: none;
 	}
@@ -342,7 +341,7 @@ div.config-form .row.field {
         background-color: #eee;
         color: #000!important;
         cursor: pointer;
-    }     
+    }
 .current-fields .tool-panel > .panel-default .panel-heading a {
     color: inherit;
 }
@@ -357,7 +356,7 @@ div.config-form .row.field {
 .submissions-table .table-outer .col-xs-12 {
     padding-left: 0!important;
     border:1px solid #ddd;
-    overflow-x: scroll; 
+    overflow-x: scroll;
     border-radius:3px;
 }
 .submissions-table .table > thead > tr > th {
@@ -409,7 +408,7 @@ section.public-form .form-submitted {
 section.public-form .btn {
     border: 1px solid;
 }
-    
+
 .form-item {
     text-align: center;
     border-bottom: 6px inset #ccc;
@@ -423,7 +422,7 @@ section.public-form .btn {
 }
 .form-item.create-new input[type='text']{
     width: inherit;
-    color:black; 
+    color:black;
     border:none;
 }
 
@@ -443,7 +442,7 @@ section.public-form .btn {
     .form-item.new-form input[type='text'] {
         margin-top:0.2em;
         width: inherit;
-        color:black; 
+        color:black;
         border:none;
         padding: 0.3em 0.6em 0.3em 0.6em;
     }
@@ -525,7 +524,7 @@ section.public-form .btn {
     position: relative;
     top: 15px;
     padding-top:3em;
-    padding-bottom:3.65em; 
+    padding-bottom:3.65em;
 }
     .form-item .title-row h4 {
         font-size: 1.3em;
