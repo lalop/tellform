@@ -3,13 +3,13 @@
 module.exports = {
 	baseUrl: process.env.BASE_URL || 'tellform.com',
 	db: {
-		uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
+		uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || '192.168.99.100:27017') + '/mean',
 		options: {
 			user: '',
 			pass: process.env.MONGOLAB_PASS || ''
 		}
 	},
-	port: process.env.PORT || 4545, 
+	port: process.env.PORT || 4545,
 	log: {
 		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
 		format: 'combined',
@@ -55,6 +55,10 @@ module.exports = {
 		from: process.env.MAILER_FROM || 'no-reply@tellform.com',
 		options: {
 			service: process.env.MAILER_SERVICE_PROVIDER || '',
+			ssl: false,
+			host: 'smtp.sparkpostmail.com',
+			port: 587,
+			secure: false,
 			auth: {
 				user: process.env.MAILER_EMAIL_ID || '',
 				pass: process.env.MAILER_PASSWORD || ''

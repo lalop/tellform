@@ -5,15 +5,19 @@ module.exports = function(grunt) {
 
 	// Unified Watch Object
 	var watchFiles = {
+
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js', '!app/tests/'],
-		clientViews: ['public/modules/**/views/**/*.html'],
-		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
-		clientCSS: ['public/modules/**/*.css'],
+
+		clientViews: ['public/modules/**/views/**/*.html', '!public/modules/**/demo/**/*.html', '!public/modules/**/dist/**/*.html', '!public/modules/**/node_modules/**/*.html'],
+		clientJS: ['public/js/*.js', 'public/modules/**/*.js', '!public/modules/**/gruntfile.js', '!public/modules/**/demo/**/*.js', '!public/modules/**/dist/**/*.js', '!public/modules/**/node_modules/**/*.js'],
+		clientCSS: ['public/modules/**/*.css', '!public/modules/**/demo/**/*.css', '!public/modules/**/dist/**/*.css', '!public/modules/**/node_modules/**/*.css'],
+
 		serverTests: ['app/tests/**/*.js'],
-		clientTests: ['public/modules/**/tests/*.js'],
-		allTests: ['public/modules/**/tests/*.js', 'app/tests/**/*.js'],
+		clientTests: ['public/modules/**/tests/*.js', '!public/modules/**/demo/**/*.js', '!public/modules/**/dist/**/*.js', '!public/modules/**/node_modules/**/*.js']
 	};
+
+	watchFiles.allTests = watchFiles.serverTests.concat(watchFiles.clientTests);
 
 	// Project Configuration
 	grunt.initConfig({
@@ -69,81 +73,81 @@ module.exports = function(grunt) {
 				options: {
 					jshintrc: true
 				}
-				},
-				allTests: {
+			},
+			allTests: {
 				src: watchFiles.allTests,
 				options: {
-				jshintrc: true
+					jshintrc: true
 				}
-				}
-				},
-				csslint: {
-				options: {
+			}
+		},
+		csslint: {
+			options: {
 				csslintrc: '.csslintrc'
-				},
-				all: {
+			},
+			all: {
 				src: watchFiles.clientCSS
-	}
-	},
-uglify: {
-production: {
-options: {
-mangle: false
-	 },
-files: {
-	       'public/dist/application.min.js': 'public/dist/application.js'
-       }
-	    }
-	},
-cssmin: {
-combine: {
-files: {
-	       'public/dist/application.min.css': '<%= applicationCSSFiles %>'
-       }
-	 }
-	},
-nodemon: {
-dev: {
-script: 'server.js',
-	options: {
-nodeArgs: ['--debug'],
-	  ext: 'js,html',
-	  watch: watchFiles.serverViews.concat(watchFiles.serverJS)
-	}
-     }
-	 },
-	 'node-inspector': {
-custom: {
-options: {
-		 'web-port': 1337,
-		 'web-host': 'localhost',
-		 'debug-port': 5858,
-		 'save-live-edit': true,
-		 'no-preload': true,
-		 'stack-trace-limit': 50,
-		 'hidden': []
-	 }
-	}
-	 },
-ngAnnotate: {
-production: {
-files: {
-	       'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
-       }
-	    }
+			}
+		},
+		uglify: {
+			production: {
+				options: {
+					mangle: false
+				},
+				files: {
+					'public/dist/application.min.js': 'public/dist/application.js'
+				}
+	    	}
+		},
+		cssmin: {
+			combine: {
+				files: {
+					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
+				}
+			}
+		},
+		nodemon: {
+			dev: {
+				script: 'server.js',
+				options: {
+					nodeArgs: ['--debug'],
+					ext: 'js,html',
+					watch: watchFiles.serverViews.concat(watchFiles.serverJS)
+				}
+			}
+		},
+		'node-inspector': {
+			custom: {
+				options: {
+					'web-port': 1337,
+					'web-host': 'localhost',
+					'debug-port': 5858,
+					'save-live-edit': true,
+					'no-preload': true,
+					'stack-trace-limit': 50,
+					'hidden': []
+				}
+			}
+		},
+		ngAnnotate: {
+			production: {
+				files: {
+					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+    			}
+	    	}
 	    },
-concurrent: {
+		concurrent: {
 		    default: ['nodemon', 'watch'],
-debug: ['nodemon', 'watch', 'node-inspector'],
-	       options: {
-logConcurrentOutput: true,
-		     limit: 10
-	       }
+			debug: ['nodemon', 'watch', 'node-inspector'],
+			options: {
+				logConcurrentOutput: true,
+		    	limit: 10
+	    	}
 	    },
-env: {
-test: {
-NODE_ENV: 'test',
-		  src: '.env'
+		env: {
+			test: {
+				NODE_ENV: 'test',
+				src: '.env'
 			},
 			secure: {
 				NODE_ENV: 'secure',
@@ -155,8 +159,9 @@ NODE_ENV: 'test',
 			},
 			dev: {
 				NODE_ENV: 'development',
-				src: '.env'
+				src: '/opt/deploy/.env'
 			},
+			src: '.env'
 		},
 		mochaTest: {
 			src: watchFiles.serverTests,
@@ -230,26 +235,31 @@ NODE_ENV: 'test',
             }
           }
         },
-        html2js: {
-		  options: {
-		    base: 'NodeForm',
-		    watch: true,
-			module: 'NodeForm.templates',
-		    singleModule: true,
-		    useStrict: true,
-		    htmlmin: {
-		      collapseBooleanAttributes: true,
-		      collapseWhitespace: true,
-		      removeAttributeQuotes: true,
-		      removeComments: true,
-		      removeEmptyAttributes: true,
-		      removeRedundantAttributes: true
-		    }
-		  },
-		  main: {
-		    src: ['public/modules/**/views/**.html', 'public/modules/**/views/**/*.html'],
-		    dest: 'public/dist/populate_template_cache.js'
-		  }
+		html2js: {
+			options: {
+				base: 'public',
+				watch: true,
+				module: 'NodeForm.templates',
+				singleModule: true,
+				useStrict: true,
+				htmlmin: {
+					collapseBooleanAttributes: true,
+					collapseWhitespace: true,
+					removeAttributeQuotes: true,
+					removeComments: true,
+					removeEmptyAttributes: true,
+					removeRedundantAttributes: true
+				}
+			},
+			main: {
+				src: ['public/modules/**/views/**.html', 'public/modules/**/views/**/*.html'],
+				dest: 'public/dist/populate_template_cache.js'
+			}
+		},
+		execute: {
+			target: {
+				src: ['./scripts/setup.js']
+			}
 		}
 	});
 
