@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "async": "^1.4.2",
+    "bcrypt": "^0.8.7",
     "body-parser": "~1.14.1",
     "bower": "~1.6.5",
     "chalk": "~1.1.1",
@@ -60,11 +61,7 @@
     "math": "0.0.3",
     "method-override": "~2.3.0",
     "mkdirp": "^0.5.1",
-<<<<<<< HEAD
-    "mongoose": "^3.8.40",
-=======
     "mongoose": "~4.4.19",
->>>>>>> admin-form
     "mongoose-utilities": "~0.1.1",
     "morgan": "~1.6.1",
     "multer": "~1.1.0",
