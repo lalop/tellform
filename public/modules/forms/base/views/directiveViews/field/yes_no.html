@@ -20,7 +20,7 @@
 
     <div class="col-xs-12 field-input">
         <div class="row">
-            <label class="btn btn-default col-md-2 col-sm-3 col-xs-4"
+            <label class="btn btn-default col-md-2 col-sm-3"
 		style="background: rgba(0,0,0,0.1); text-align:left;">
                 <input type="radio" value="true"
 					class="focusOn"
@@ -29,7 +29,7 @@
 				    ng-focus="setActiveField(field._id, index, true)"
 					ng-model-options="{ debounce: 250 }"
 					ng-required="field.required"
-					ng-change="$root.nextField()"
+					ng-change="$root.nextField(field)"
                     ng-disabled="field.disabled" />
 				<div class="letter">
 					{{ 'Y' | translate }}
@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="row" style="margin-top: 10px;">
-            <label class="btn btn-default col-md-2 col-sm-3 col-xs-4"
+            <label class="btn btn-default col-md-2 col-sm-3"
 		        style="background: rgba(0,0,0,0.1); text-align:left;">
 
                 <input type="radio" value="false"
@@ -49,7 +49,7 @@
 			        ng-model="field.fieldValue"
 			        ng-model-options="{ debounce: 250 }"
 			        ng-required="field.required"
-			        ng-change="$root.nextField()"
+			        ng-change="$root.nextField(field)"
                     ng-disabled="field.disabled"/>
 
 			<div class="letter">

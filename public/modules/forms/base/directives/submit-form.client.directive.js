@@ -29,7 +29,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 				}
 
 				computeAdvancement();
-                
+
                 $scope.reloadForm = function(){
                     //Reset Form
                     $scope.myform.submitted = false;
@@ -160,9 +160,11 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 					SendVisitorData.send($scope.myform, getActiveField(), TimeCounter.getTimeElapsed());
                 };
 
-                $rootScope.nextField = $scope.nextField = function(){
+                $rootScope.nextField = $scope.nextField = function(field){
 
-					if($scope.myform.form_fields[$scope.selected.index].fieldLogic) {
+                    if(field) {
+                        // yes no question #fix for iphone
+                        $scope.selected.index = 0;
 						(function(field) {
 							try{
 								eval(field.fieldLogic);

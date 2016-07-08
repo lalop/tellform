@@ -3,18 +3,18 @@
 angular.module('forms').config(['$translateProvider', function ($translateProvider) {
 
   $translateProvider.translations('english', {
-    FORM_SUCCESS: 'Form entry successfully submitted!',
-	REVIEW: 'Review',
+    FORM_SUCCESS: 'Your answers have been saved. Thank you for your participation!',
+	REVIEW: 'Finish the survey',
     BACK_TO_FORM: 'Go back to Form',
 	EDIT_FORM: 'Edit this TellForm',
 	CREATE_FORM: 'Create this TellForm',
 	ADVANCEMENT: '{{done}} out of {{total}} answered',
 	CONTINUE_FORM: 'Continue to Form',
 	REQUIRED: 'required',
-	COMPLETING_NEEDED: '{{answers_not_completed}} answer(s) need completing',
+	COMPLETING_NEEDED: 'Your questionnaire is incomplete: {{answers_not_completed}} answer(s) must be completed',
 	OPTIONAL: 'optional',
 	ERROR_EMAIL_INVALID: 'Please enter a valid email address',
-	ERROR_NOT_A_NUMBER: 'Please enter valid numbers only',
+	ERROR_NOT_A_NUMBER: 'The answer must be a positive integer',
 	ERROR_URL_INVALID: 'Please a valid url',
 	OK: 'OK',
 	ENTER: 'press ENTER',
@@ -29,7 +29,9 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	SUBMIT: 'Submit',
 	UPLOAD_FILE: 'Upload your File',
 	Y: 'Y',
-	N: 'N'
+	N: 'N',
+	PREV_BUTTON: 'Back to the previous question',
+	NEXT_BUTTON: 'Go to next question'
   });
 
   $translateProvider.preferredLanguage('english')

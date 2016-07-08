@@ -3,18 +3,18 @@
 angular.module('forms').config(['$translateProvider', function ($translateProvider) {
 
   $translateProvider.translations('german', {
-	FORM_SUCCESS: 'Ihre Angaben wurden gespeichert.',
-	REVIEW: 'Unvollständig',
+	FORM_SUCCESS: 'Ihre Antworten wurden gespeichert. Vielen Dank für Ihre Teilnahme!',
+	REVIEW: 'Umfrage beenden',
 	BACK_TO_FORM: 'Zurück zum Formular',
 	EDIT_FORM: '',
 	CREATE_FORM: '',
 	ADVANCEMENT: '{{done}} von {{total}} beantwortet',
 	CONTINUE_FORM: 'Zum Formular',
 	REQUIRED: 'verpflichtend',
-	COMPLETING_NEEDED: 'Es fehlen/fehtl noch {{answers_not_completed}} Antwort(en)',
+	COMPLETING_NEEDED: 'Ihr Fragebogen ist unvollständig: {{answers_not_completed}} Antwort(en) fehlt/fehlen noch',
 	OPTIONAL: 'fakultativ',
 	ERROR_EMAIL_INVALID: 'Bitte gültige Mailadresse eingeben',
-	ERROR_NOT_A_NUMBER: 'Bitte nur Zahlen eingeben',
+	ERROR_NOT_A_NUMBER: 'Bei der Antwort muss es sich um eine ganze Zahl im positiven Bereich handeln.',
 	ERROR_URL_INVALID: 'Bitte eine gültige URL eingeben',
 	OK: 'Okay',
 	ENTER: 'Eingabetaste drücken',
@@ -30,6 +30,8 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	UPLOAD_FILE: 'Datei versenden',
 	Y: 'J',
 	N: 'N',
+	PREV_BUTTON: 'Zurück zur vorhergehenden Frage',
+	NEXT_BUTTON: 'Zur nächsten Frage'
   });
 
 }]);

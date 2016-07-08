@@ -66,10 +66,10 @@ ng-style="{'color':button.color}">
 <div class="row form-actions" id="submit_field"
 	ng-class="{activeField: selected._id == 'submit_field' }"
 	ng-style="{ 'background-color':myform.design.colors.buttonColor}"
-	style="border-top: 1px solid #ddd; margin-right: -13%; margin-left: -13%; margin-top: 30vh; height: 100vh">
+	style="border-top: 1px solid #ddd; margin-right: -13%; margin-left: -13%; margin-top: 30vh; height: 100vh;">
 
 	<div class="col-xs-12 text-left"
-		 style="background-color:#990000; color:white;"
+		 style="background-color:#fd8670; color:white;"
 		 ng-if="forms.myForm.$invalid">
          {{ 'COMPLETING_NEEDED' | translate:translateAdvancementData }}
 	</div>
@@ -92,7 +92,7 @@ ng-style="{'color':button.color}">
 			ng-click="goToInvalid()"
 			on-enter-key="goToInvalid()"
 			on-enter-key-disabled="!forms.myForm.$invalid"
-			style="font-size: 1.6em; margin-left: 1em; margin-top: 1em; background-color:#990000; color:white">
+			style="font-size: 1.6em; margin-left: 1em; margin-top: 1em; background-color:#fd8670; color:white">
 		{{ 'REVIEW' | translate }}
 	</button>
 
@@ -124,13 +124,15 @@ ng-style="{'color':button.color}">
                         <button class="btn btn-lg col-xs-6" id="focusDownButton"
 				            ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}"
                             ng-click="nextField()"
-				            ng-disabled="selected.index > myform.form_fields.length-1">
+				            ng-disabled="selected.index > myform.form_fields.length-1"
+							title="{{ 'NEXT_BUTTON' | translate }}">
                         	<i class="fa fa-chevron-down"></i>
                         </button>
                         <button class="btn btn-lg col-xs-6" id="focusUpButton"
                             ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}"
                             ng-click="prevField()"
-                            ng-disabled="selected.index == 0">
+                            ng-disabled="selected.index == 0"
+							title="{{ 'PREV_BUTTON' | translate }}">
                         	<i class="fa fa-chevron-up"></i>
                         </button>
                     </div>

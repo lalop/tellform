@@ -39,9 +39,7 @@ angular.module('forms').directive('fieldDirective', ['$http', '$compile', '$root
 				}else if(type === 'rating'){
 					scope.field.fieldValue = 0;
 				}else if(scope.field.fieldType === 'radio'){
-					console.log(scope.field);
 					scope.field.fieldValue = scope.field.fieldOptions[0].option_value;
-					console.log(scope.field.fieldValue);
 				}else if(type === 'legal'){
 					scope.field.fieldValue = 'true';
 					$rootScope.nextField();
