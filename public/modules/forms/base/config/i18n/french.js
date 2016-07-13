@@ -31,7 +31,8 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	Y: 'O',
 	N: 'N',
 	PREV_BUTTON: 'Revenir à la question précédente',
-	NEXT_BUTTON: 'Aller à la question suivante'
+	NEXT_BUTTON: 'Aller à la question suivante',
+	SAVE_MESSAGE: 'Vous avez  répondu à toutes les questions de ce sondage. Pour que vos réponses soient prises en compte, merci de cliquer sur "Enregistrer".'
   });
 
 }]);

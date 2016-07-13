@@ -31,7 +31,8 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	Y: 'J',
 	N: 'N',
 	PREV_BUTTON: 'Zurück zur vorhergehenden Frage',
-	NEXT_BUTTON: 'Zur nächsten Frage'
+	NEXT_BUTTON: 'Zur nächsten Frage',
+	SAVE_MESSAGE: 'Sie haben alle Fragen dieser Umfrage beantwortet. Damit wir Ihre Antworten berücksichtigen können, klicken Sie bitte auf "Speichern".'
   });
 
 }]);

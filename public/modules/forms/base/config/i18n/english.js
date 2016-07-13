@@ -31,7 +31,8 @@ angular.module('forms').config(['$translateProvider', function ($translateProvid
 	Y: 'Y',
 	N: 'N',
 	PREV_BUTTON: 'Back to the previous question',
-	NEXT_BUTTON: 'Go to next question'
+	NEXT_BUTTON: 'Go to next question',
+	SAVE_MESSAGE: 'You have answered all the questions in this survey. In order for your answers to be taken into account, please click on "Submit".'
   });
 
   $translateProvider.preferredLanguage('english')
