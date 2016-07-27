@@ -15,13 +15,14 @@
  			<small>{{field.description}}</small>
  		</p>
  	</div>
-	
+
     <div class="col-xs-12 field-input">
         <div ng-repeat="option in field.fieldOptions">
 		    <div class="col-xs-12 field-title" ng-style="{'color': design.colors.questionColor}">
 			    <h4>{{option.option_title}}</h4>
 		    </div>
-            <input-stars max="5" ng-focus="setActiveField(field._id, index, true)"
+            <input-stars max="5"
+				ng-focus="setActiveField(field._id, index, true)"
 				icon-full="fa-star"
 				icon-base="fa fa-3x"
 				icon-empty="fa-star-o"
@@ -36,19 +37,14 @@
 </div>
 
 <div>
-	<div class="btn btn-lg btn-default col-xs-12 col-sm-4 hidden-xs"
+	<div class="btn btn-lg btn-default col-sm-2 col-xs-4"
 	 	style="padding: 4px; margin-top:8px; background: rgba(255,255,255,0.5)">
 			<button ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
 				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
                 ng-click="$root.nextField()"
-				class="btn col-sm-5 col-xs-5">
+				class="btn col-sm-12 col-xs-12">
 
 				{{ 'OK' | translate }} <i class="fa fa-check"></i>
 			</button>
-			<div class="col-sm-3 col-xs-6" style="margin-top:0.2em">
-				<small style="{'color': design.colors.answerColor, 'font-size': '70%'}">
-				{{ 'ENTER' | translate }}
-				</small>
-			</div>
 	</div>
 </div>
