@@ -27,16 +27,17 @@
 </div>
 
 <div>
-	<div class="btn btn-lg btn-default col-xs-12 col-sm-4 hidden-xs"
+	<div class="btn btn-lg btn-default hidden-xs"
 		 style="padding: 4px; margin-top:8px; background: rgba(255,255,255,0.5)">
 		<button ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
 				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
 				ng-click="$root.nextField()"
-				class="btn col-sm-5 col-xs-5">
+				style="float: left;"
+				class="btn">
 
 			{{ 'OK' | translate }} <i class="fa fa-check"></i>
 		</button>
-		<div class="col-sm-3 col-xs-6" style="margin-top:0.2em">
+		<div style="margin-top:0.2em;float: left;margin-left: 10px;margin-right: 10px;">
 			<small style="{'color': design.colors.answerColor, 'font-size': '70%'}">
 				{{ 'ENTER' | translate }}
 			</small>

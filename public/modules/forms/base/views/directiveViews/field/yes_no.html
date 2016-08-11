@@ -3,7 +3,7 @@
 	 	on-tab-and-shift-key="prevField()"
 	 	key-to-truthy key-char-truthy="y" key-char-falsey="n" field="field">
     <div class="col-xs-12 field-title" ng-style="{'color': design.colors.questionColor}">
-        <h3 class="row">
+        <h3>
 			<small class="field-number">
 				{{index+1}}
 				<i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -13,13 +13,13 @@
                 {{ 'OPTIONAL' | translate }}
             </span>
         </h3>
-        <p class="row">
+		<p class="col-xs-12">
             {{field.description}}
         </p>
     </div>
 
     <div class="col-xs-12 field-input">
-        <div class="row">
+        <div class="row" style="margin-left: 0">
             <label class="btn btn-default col-md-2 col-sm-3"
 		style="background: rgba(0,0,0,0.1); text-align:left;">
                 <input type="radio" value="true"
@@ -39,7 +39,7 @@
             </label>
 	</div>
 
-	<div class="row" style="margin-top: 10px;">
+	<div class="row" style="margin-top: 10px;margin-left: 0">
             <label class="btn btn-default col-md-2 col-sm-3"
 		        style="background: rgba(0,0,0,0.1); text-align:left;">
 
@@ -61,4 +61,22 @@
         </div>
     </div>
 </div>
-<br>
+
+<div>
+	<div class="btn btn-lg btn-default hidden-xs"
+	 	style="padding: 4px; margin-top:8px; background: rgba(255,255,255,0.5)">
+			<button ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
+				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
+                ng-click="$root.nextField()"
+				style="float: left;"
+				class="btn">
+
+				{{ 'OK' | translate }} <i class="fa fa-check"></i>
+			</button>
+			<div style="margin-top:0.2em;float: left;margin-left: 10px;margin-right: 10px;">
+				<small style="{'color': design.colors.answerColor, 'font-size': '70%'}">
+				{{ 'ENTER' | translate }}
+				</small>
+			</div>
+	</div>
+</div>

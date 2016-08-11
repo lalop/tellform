@@ -58,8 +58,9 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 
 				//Fire event when window is scrolled
 				$window.onscroll = function(){
-            		$scope.scrollPos = document.body.scrollTop || document.documentElement.scrollTop || 0;
+            		// $scope.scrollPos = document.body.scrollTop || document.documentElement.scrollTop || 0;
 					var elemBox = document.getElementsByClassName('activeField')[0].getBoundingClientRect();
+                    var middleOfPage = $(window).height() / 2;
 					$scope.fieldTop = elemBox.top;
 					$scope.fieldBottom = elemBox.bottom;
 
@@ -81,17 +82,17 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                                 field_id = $scope.myform.visible_form_fields[field_index]._id;
                                 $scope.setActiveField(field_id, field_index, false);
                             }
-                        }else if( $scope.fieldBottom < 0){
+                        }else if( $scope.fieldBottom < middleOfPage){
                             field_index = $scope.selected.index+1;
                             field_id = $scope.myform.visible_form_fields[field_index]._id;
                             $scope.setActiveField(field_id, field_index, false);
-                        }else if ( $scope.selected.index !== 0 && $scope.fieldTop > 0) {
+                        }else if ( $scope.selected.index !== 0 && $scope.fieldTop > middleOfPage) {
                             field_index = $scope.selected.index-1;
                             field_id = $scope.myform.visible_form_fields[field_index]._id;
                             $scope.setActiveField(field_id, field_index, false);
                         }
-                        //console.log('$scope.selected.index: '+$scope.selected.index);
-					    //console.log('scroll pos: '+$scope.scrollPos+' fieldTop: '+$scope.fieldTop+' fieldBottom: '+$scope.fieldBottom);
+                        // console.log('$scope.selected.index: '+$scope.selected.index);
+					    // console.log('scroll pos: '+$scope.scrollPos+' fieldTop: '+$scope.fieldTop+' fieldBottom: '+$scope.fieldBottom);
             		    $scope.$apply();
                     }
         		};
@@ -147,14 +148,15 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                             });
                         });
                     }else {
-						setTimeout(function() {
-							if (document.querySelectorAll('.activeField .focusOn')[0]) {
-								//FIXME: DAVID: Figure out how to set focus without scroll movement in HTML Dom
-								document.querySelectorAll('.activeField .focusOn')[0].focus();
-							} else {
-								document.querySelectorAll('.activeField input')[0].focus();
-							}
-						});
+                        // commenter car casse toute l'ui aveec des scrolls intempestifs
+						// setTimeout(function() {
+						// 	if (document.querySelectorAll('.activeField .focusOn')[0]) {
+						// 		//FIXME: DAVID: Figure out how to set focus without scroll movement in HTML Dom
+						// 		document.querySelectorAll('.activeField .focusOn')[0].focus();
+						// 	} else {
+						// 		document.querySelectorAll('.activeField input')[0].focus();
+						// 	}
+						// });
 					}
 
 					SendVisitorData.send($scope.myform, getActiveField(), TimeCounter.getTimeElapsed());
@@ -211,7 +213,13 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                 };
 
 				$rootScope.goToInvalid = $scope.goToInvalid = function() {
-					document.querySelectorAll('.ng-invalid.focusOn')[0].focus();
+                    var fields = $scope.myform.form_fields;
+                    for(var i in fields) {
+                        if(!(fields[i].fieldValue)) {
+                            $rootScope.setActiveField(fields[i]._id, i, true);
+                            return;
+                        }
+                    }
 				};
 
 				$rootScope.submitForm = $scope.submitForm = function() {

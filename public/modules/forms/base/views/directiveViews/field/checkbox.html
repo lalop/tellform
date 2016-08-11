@@ -15,7 +15,7 @@
 			<small>{{field.description}}</small>
 		</p>
 	</div>
-    <div class="col-xs-12 field-input">
+    <div class="col-xs-12 field-input" style="margin-left: -0.3em">
         <div ng-repeat="option in field.fieldOptions" class="row-fluid">
             <label class="btn"
                     style="margin: 0.5em; padding-left:30px; white-space: normal"
@@ -25,8 +25,7 @@
 					value="{{option.option_value}}"
 					ng-model="field.fieldValue[option.option_id]"
                     ng-disabled="field.disabled"
-		        	ng-focus="setActiveField(field._id, index, true)"
-					ng-change="$root.nextField()"/>
+		        	ng-focus="setActiveField(field._id, index, true)" />
 
                 <span ng-bind="option.option_value" style="white-space: normal"></span>
             </label>
@@ -35,16 +34,17 @@
 </div>
 
 <div>
-	<div class="btn btn-lg btn-default col-xs-12 col-sm-4 hidden-xs"
+	<div class="btn btn-lg btn-default hidden-xs"
 	 	style="padding: 4px; margin-top:8px; background: rgba(255,255,255,0.5)">
 			<button ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
 				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
+				style="float: left;"
                 ng-click="$root.nextField()"
-				class="btn col-sm-5 col-xs-5">
+				class="btn">
 
 				{{ 'OK' | translate }} <i class="fa fa-check"></i>
 			</button>
-			<div class="col-sm-3 col-xs-6" style="margin-top:0.2em">
+			<div style="margin-top:0.2em;float: left;margin-left: 10px;margin-right: 10px;">
 				<small style="{'color': design.colors.answerColor, 'font-size': '70%'}">
 				{{ 'ENTER' | translate }}
 				</small>

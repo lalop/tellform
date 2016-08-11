@@ -66,7 +66,7 @@ ng-style="{'color':button.color}">
 <div class="row form-actions" id="submit_field"
 	ng-class="{activeField: selected._id == 'submit_field' }"
 	ng-style="{ 'background-color':myform.design.colors.buttonColor}"
-	style="border-top: 1px solid #ddd; margin-right: -13%; margin-left: -13%; margin-top: 30vh; height: 100vh;">
+	style="border-top: 1px solid #ddd; margin-right: -12.5%; margin-left: -12.5%; margin-top: 30vh; height: 100vh;">
 
 	<div class="col-xs-12 text-left"
 		 style="background-color:#fd8670; color:white;"
@@ -104,7 +104,7 @@ ng-style="{'color':button.color}">
     		{{ 'REVIEW' | translate }}
     	</button>
 
-    	<div class="col-sm-2 hidden-xs" style="font-size: 75%; margin-top:3.25em">
+    	<div class="col-sm-2 hidden-xs" style="font-size: 75%; margin-top:3.25em" ng-if="!forms.myForm.$invalid">
     		<small>
     			{{ 'ENTER' | translate }}
     		</small>
