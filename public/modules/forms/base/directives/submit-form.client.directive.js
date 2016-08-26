@@ -84,8 +84,10 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                             }
                         }else if( $scope.fieldBottom < middleOfPage){
                             field_index = $scope.selected.index+1;
-                            field_id = $scope.myform.visible_form_fields[field_index]._id;
-                            $scope.setActiveField(field_id, field_index, false);
+                            if($scope.myform.visible_form_fields[field_index]) {
+                                field_id = $scope.myform.visible_form_fields[field_index]._id;
+                                $scope.setActiveField(field_id, field_index, false);
+                            }
                         }else if ( $scope.selected.index !== 0 && $scope.fieldTop > middleOfPage) {
                             field_index = $scope.selected.index-1;
                             field_id = $scope.myform.visible_form_fields[field_index]._id;
@@ -115,16 +117,11 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 
                 $scope.setActiveField = $rootScope.setActiveField = function(field_id, field_index, animateScroll) {
                     if($scope.selected === null || $scope.selected._id === field_id){
-						//console.log('not scrolling');
-						//console.log($scope.selected);
 						return;
 		    		}
-                    //console.log('field_id: '+field_id);
-                    //console.log('field_index: '+field_index);
-                    //console.log($scope.selected);
 
                     $scope.selected._id = field_id;
-                    $scope.selected.index = field_index;
+                    $scope.selected.index = parseInt(field_index);
 
 					computeAdvancement();
 
