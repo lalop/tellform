@@ -35,21 +35,3 @@
         </div>
     </div>
 </div>
-<div>
-	<div class="btn btn-lg btn-default hidden-xs"
-	 	style="padding: 4px; margin-top:8px; background: rgba(255,255,255,0.5)">
-			<button ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
-				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
-                ng-click="$root.nextField()"
-				style="float: left;"
-				class="btn">
-
-				{{ 'OK' | translate }} <i class="fa fa-check"></i>
-			</button>
-			<div style="margin-top:0.2em;float: left;margin-left: 10px;margin-right: 10px;">
-				<small style="{'color': design.colors.answerColor, 'font-size': '70%'}">
-				{{ 'ENTER' | translate }}
-				</small>
-			</div>
-	</div>
-</div>
