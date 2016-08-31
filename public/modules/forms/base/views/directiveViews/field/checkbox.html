@@ -27,7 +27,7 @@
 					ng-change="checkboxValidity()"
                     ng-disabled="field.disabled"
 					name="{{field._id}}"
-					required
+					ng-required="!someSelected(field.fieldValue)"
 		        	ng-focus="setActiveField(field._id, index, true)" />
 
                 <span ng-bind="option.option_value" style="white-space: normal"></span>
@@ -47,10 +47,5 @@
 
 				{{ 'OK' | translate }} <i class="fa fa-check"></i>
 			</button>
-			<div style="margin-top:0.2em;float: left;margin-left: 10px;margin-right: 10px;">
-				<small style="{'color': design.colors.answerColor, 'font-size': '70%'}">
-				{{ 'ENTER' | translate }}
-				</small>
-			</div>
 	</div>
 </div>

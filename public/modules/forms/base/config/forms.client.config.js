@@ -17,8 +17,27 @@ angular.module('forms')
 			var fields = formObj.form_fields;
 
 			var valid_count = fields.filter(function(field){
-				if(typeof field === 'object' && field.fieldType !== 'statement' && field.fieldType !== 'rating'){
-					return !!(field.fieldValue);
+				if(typeof field === 'object') {
+					if(field.fieldType === 'ratings') {
+						var isValid = !!field.fieldValue;
+						if(isValid) {
+							field.fieldOptions.forEach(function(option) {
+								isValid = isValid && !!field.fieldValue[option.option_id];
+							});
+						}
+						return isValid;
+					} if(field.fieldType === 'checkbox') {
+						var isValid = !!field.fieldValue;
+						if(isValid) {
+							isValid = false;
+							field.fieldOptions.forEach(function(option) {
+								isValid = isValid || !!field.fieldValue[option.option_id];
+							});
+						}
+						return isValid;
+					} else if(field.fieldType !== 'statement' && field.fieldType !== 'rating'){
+						return !!(field.fieldValue);
+					}
 				}
 			}).length;
 			return valid_count - (formObj.form_fields.length - formObj.visible_form_fields.length);

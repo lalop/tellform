@@ -48,6 +48,16 @@ angular.module('forms').directive('fieldDirective', ['$http', '$compile', '$root
 
             scope.setActiveField = $rootScope.setActiveField;
 
+			scope.someSelected = function(values) {
+				if(values) {
+					return Object.keys(values).some(function (key) {
+					    return !!values[key];
+				  	});
+				} else {
+					return false;
+				}
+			};
+
             //Set format only if field is a date
             if(scope.field.fieldType === 'date'){
                 scope.dateOptions = {

@@ -52,7 +52,7 @@ ng-style="{'color':button.color}">
 		data-index="{{$index}}"
 		data-id="{{field._id}}"
 		ng-class="{activeField: selected._id == field._id }"
-        style="min-height: 50vh"
+        style="min-height: 70vh"
 		class="row field-directive">
 
 			<field-directive field="field" design="myform.design" index="$index" forms="forms">
@@ -72,6 +72,7 @@ ng-style="{'color':button.color}">
 	<div class="col-xs-12 text-left"
 		 style="background-color:#fd8670; color:white;"
 		 ng-if="forms.myForm.$invalid">
+
          {{ 'COMPLETING_NEEDED' | translate:translateAdvancementData }}
 	</div>
     <div class="col-xs-12 text-left"
