@@ -39,7 +39,8 @@
 <div>
 	<div class="btn btn-lg btn-default hidden-xs"
 	 	style="padding: 4px; margin-top:8px; background: rgba(255,255,255,0.5)">
-			<button ng-disabled="forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
+			<button
+				ng-disabled="forms.myForm[field._id].$invalid"
 				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
 				style="float: left;"
                 ng-click="$root.nextField()"
