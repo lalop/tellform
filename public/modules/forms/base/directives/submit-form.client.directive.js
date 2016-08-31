@@ -212,7 +212,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 				$rootScope.goToInvalid = $scope.goToInvalid = function() {
                     var fields = $scope.myform.form_fields;
                     for(var i in fields) {
-                        if(!(fields[i].fieldValue)) {
+                        if(!(fields[i].isValid)) {
                             $rootScope.setActiveField(fields[i]._id, i, true);
                             return;
                         }

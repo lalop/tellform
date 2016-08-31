@@ -35,8 +35,10 @@ angular.module('forms')
 								isValid = isValid || !!field.fieldValue[option.option_id];
 							});
 						}
+						field.isValid = isValid;
 						return isValid;
 					} else if(field.fieldType !== 'statement' && field.fieldType !== 'rating'){
+						field.isValid = !!(field.fieldValue);
 						return !!(field.fieldValue);
 					}
 				}
