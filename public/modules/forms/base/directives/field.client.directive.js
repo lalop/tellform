@@ -21,6 +21,8 @@ angular.module('forms').directive('fieldDirective', ['$http', '$compile', '$root
    		return $templateCache.get(templateUrl);
     };
 
+
+
     return {
         template: '<div>{{field.title}}</div>',
         restrict: 'E',
@@ -47,6 +49,17 @@ angular.module('forms').directive('fieldDirective', ['$http', '$compile', '$root
 			};
 
             scope.setActiveField = $rootScope.setActiveField;
+
+            scope.isRatingsValid = function(field) {
+                var isValid = !!field.fieldValue;
+                if(isValid) {
+                    field.fieldOptions.forEach(function(option) {
+                        isValid = isValid && !!field.fieldValue[option.option_id];
+                    });
+                }
+                field.isValid = isValid;
+                return isValid;
+            };
 
 			scope.someSelected = function(values) {
 				if(values) {

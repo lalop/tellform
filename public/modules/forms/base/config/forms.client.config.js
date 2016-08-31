@@ -25,6 +25,7 @@ angular.module('forms')
 								isValid = isValid && !!field.fieldValue[option.option_id];
 							});
 						}
+						field.isValid = isValid;
 						return isValid;
 					} if(field.fieldType === 'checkbox') {
 						var isValid = !!field.fieldValue;
