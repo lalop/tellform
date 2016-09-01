@@ -82,10 +82,10 @@ ng-style="{'color':button.color}">
         {{ 'SAVE_MESSAGE' | translate }}
     </div>
 
-    <div style="margin-top: 36vh">
+    <div style="margin-top: 36vh;">
 
     	<button ng-if="!forms.myForm.$invalid"
-    		class="Button btn col-sm-offset-5 col-sm-2 col-xs-8 focusOn"
+    		class="Button btn col-sm-offset-5 col-sm-2 col-xs-8 focusOn hidden-xs"
     		v-busy="loading" v-busy-label="Please wait" v-pressable
     		ng-disabled="loading || forms.myForm.$invalid"
     		ng-click="submitForm()"
@@ -98,11 +98,11 @@ ng-style="{'color':button.color}">
     	</button>
 
     	<button ng-if="forms.myForm.$invalid"
-    			class="Button btn col-sm-offset-4 col-sm-3 col-xs-10 focusOn"
+    			class="Button btn col-sm-offset-4 col-sm-3 col-xs-10 focusOn hidden-xs"
     			ng-click="goToInvalid()"
     			on-enter-key="goToInvalid()"
     			on-enter-key-disabled="!forms.myForm.$invalid"
-    			style="font-size: 1.6em; margin-top: 1em; background-color:#fd8670; color:white">
+    			style="font-size: 1.6em; margin-top: 1em; background-color:#fd8670; color:white;">
     		{{ 'REVIEW' | translate }}
     	</button>
 
@@ -111,6 +111,30 @@ ng-style="{'color':button.color}">
     			{{ 'ENTER' | translate }}
     		</small>
     	</div>
+
+        <div class="visible-xs" style="text-align: center">
+            <button ng-if="!forms.myForm.$invalid"
+                class="Button btn col-sm-offset-5 col-sm-2 col-xs-8 focusOn"
+                v-busy="loading" v-busy-label="Please wait" v-pressable
+                ng-disabled="loading || forms.myForm.$invalid"
+                ng-click="submitForm()"
+                on-enter-key="submitForm()"
+                on-enter-key-disabled="loading || forms.myForm.$invalid"
+                ng-style="{'background-color':myform.design.colors.buttonColor, 'color':myform.design.colors.buttonTextColor}"
+                style="font-size: 1.6em; margin-top: 1em; float:none">
+
+                {{ 'SUBMIT' | translate }}
+            </button>
+
+            <button ng-if="forms.myForm.$invalid"
+                    class="Button btn col-sm-offset-4 col-sm-3 col-xs-10 focusOn"
+                    ng-click="goToInvalid()"
+                    on-enter-key="goToInvalid()"
+                    on-enter-key-disabled="!forms.myForm.$invalid"
+                    style="font-size: 1.6em; margin-top: 1em; background-color:#fd8670; color:white; float:none">
+                {{ 'REVIEW' | translate }}
+            </button>
+        </div>
     </div>
 </div>
 
