@@ -51,7 +51,6 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                     };
                     $scope.setActiveField($scope.myform.visible_form_fields[0]._id, 0, false);
 
-                    //console.log($scope.selected);
                     //Reset Timer
                     TimeCounter.restartClock();
                 };
@@ -64,7 +63,6 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 					$scope.fieldTop = elemBox.top;
 					$scope.fieldBottom = elemBox.bottom;
 
-                    //console.log($scope.forms.myForm);
 					var field_id;
 					var field_index;
 
@@ -93,8 +91,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                             field_id = $scope.myform.visible_form_fields[field_index]._id;
                             $scope.setActiveField(field_id, field_index, false);
                         }
-                        // console.log('$scope.selected.index: '+$scope.selected.index);
-					    // console.log('scroll pos: '+$scope.scrollPos+' fieldTop: '+$scope.fieldTop+' fieldBottom: '+$scope.fieldBottom);
+
             		    $scope.$apply();
                     }
         		};
@@ -116,6 +113,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 				};
 
                 $scope.setActiveField = $rootScope.setActiveField = function(field_id, field_index, animateScroll) {
+
                     if($scope.selected === null || $scope.selected._id === field_id){
 						return;
 		    		}
@@ -160,8 +158,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
                 };
 
                 $rootScope.nextField = $scope.nextField = function(field){
-
-                    if(field) {
+                    if(field && field.fieldType === 'yes_no') {
                         // yes no question #fix for iphone
                         $scope.selected.index = 0;
 						(function(field) {
@@ -172,18 +169,18 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 								console.log('error in logicJump', e);
 							}
 						})($scope.myform.form_fields[$scope.selected.index]);
-					}
+					} else {
+                        $scope.selected.index = $scope.selected.index || 1;
+                    }
 
-                    //console.log('nextfield');
-                    //console.log($scope.selected.index);
-					//console.log($scope.myform.visible_form_fields.length-1);
 					var selected_index, selected_id;
+
 					if($scope.selected.index < $scope.myform.visible_form_fields.length-1){
                         selected_index = $scope.selected.index+1;
                         selected_id = $scope.myform.visible_form_fields[selected_index]._id;
                         $rootScope.setActiveField(selected_id, selected_index, true);
                     } else if($scope.selected.index === $scope.myform.visible_form_fields.length-1) {
-						//console.log('Second last element');
+
 						selected_index = $scope.selected.index+1;
 						selected_id = 'submit_field';
 
@@ -240,7 +237,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 					setTimeout(function () {
 						$scope.submitPromise = $http.post('/forms/' + $scope.myform._id, form)
 							.success(function (data, status, headers) {
-								console.log($scope.myform.form_fields[0]);
+
 								$scope.myform.submitted = true;
 								$scope.loading = false;
 								SendVisitorData.send($scope.myform, getActiveField(), _timeElapsed);

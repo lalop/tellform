@@ -1,5 +1,4 @@
 <div class="field row radio"
-	 on-enter-or-tab-key="nextField()"
 	 key-to-option field="field"
 	 ng-if="field.fieldOptions.length > 0">
     <div class="col-xs-12 field-title" ng-style="{'color': design.colors.questionColor}">
@@ -19,6 +18,7 @@
         <div ng-repeat="option in field.fieldOptions" class="row-fluid">
             <label class="btn col-md-4 col-xs-12 col-sm-12"
                     style="margin: 0.5em; padding-left:30px"
+					ng-click="setActiveField(field._id, index, true)"
                     ng-class="{activeBtn: field.fieldValue == field.fieldOptions[$index].option_value}">
 				<input ng-style="{'color': design.colors.answerColor, 'border-color': design.colors.answerColor}"
                     type="radio" class="focusOn"
@@ -41,7 +41,7 @@
 			<button
 				ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
 				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
-                ng-click="$root.nextField()"
+        		ng-click="$root.nextField()"
 				style="float: left;"
 				class="btn">
 
