@@ -59,7 +59,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 				$window.onscroll = function(){
             		// $scope.scrollPos = document.body.scrollTop || document.documentElement.scrollTop || 0;
 					var elemBox = document.getElementsByClassName('activeField')[0].getBoundingClientRect();
-                    var middleOfPage = $(window).height() / 2;
+          var middleOfPage = $(window).height() / 2;
 					$scope.fieldTop = elemBox.top;
 					$scope.fieldBottom = elemBox.bottom;
 
@@ -154,13 +154,12 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 						// });
 					}
 
-					SendVisitorData.send($scope.myform, getActiveField(), TimeCounter.getTimeElapsed());
-                };
+        };
 
-                $rootScope.nextField = $scope.nextField = function(field){
-                    if(field && field.fieldType === 'yes_no') {
-                        // yes no question #fix for iphone
-                        $scope.selected.index = 0;
+        $rootScope.nextField = $scope.nextField = function(field){
+          if(field && field.fieldType === 'yes_no') {
+            // yes no question #fix for iphone
+            $scope.selected.index = 0;
 						(function(field) {
 							try{
 								eval(field.fieldLogic);
@@ -169,24 +168,24 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 								console.log('error in logicJump', e);
 							}
 						})($scope.myform.form_fields[$scope.selected.index]);
-					} else {
-                        $scope.selected.index = $scope.selected.index || 1;
-                    }
+					} else if($scope.myform.visible_form_fields[0].type === 'yes_no'){
+            $scope.selected.index = $scope.selected.index || 1;  
+          }
 
 					var selected_index, selected_id;
 
 					if($scope.selected.index < $scope.myform.visible_form_fields.length-1){
-                        selected_index = $scope.selected.index+1;
-                        selected_id = $scope.myform.visible_form_fields[selected_index]._id;
-                        $rootScope.setActiveField(selected_id, selected_index, true);
-                    } else if($scope.selected.index === $scope.myform.visible_form_fields.length-1) {
+              selected_index = $scope.selected.index+1;
+              selected_id = $scope.myform.visible_form_fields[selected_index]._id;
+              $rootScope.setActiveField(selected_id, selected_index, true);
+          } else if($scope.selected.index === $scope.myform.visible_form_fields.length-1) {
 
 						selected_index = $scope.selected.index+1;
 						selected_id = 'submit_field';
 
 						$rootScope.setActiveField(selected_id, selected_index, true);
 					}
-                };
+        };
 
                 $rootScope.prevField = $scope.prevField = function(){
                     if($scope.selected.index > 0){
