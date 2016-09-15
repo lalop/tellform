@@ -168,8 +168,8 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 								console.log('error in logicJump', e);
 							}
 						})($scope.myform.form_fields[$scope.selected.index]);
-					} else if($scope.myform.visible_form_fields[0].type === 'yes_no'){
-            $scope.selected.index = $scope.selected.index || 1;  
+					} else if($scope.myform.visible_form_fields[0].fieldType === 'yes_no'){
+            $scope.selected.index = $scope.selected.index || 1;
           }
 
 					var selected_index, selected_id;
