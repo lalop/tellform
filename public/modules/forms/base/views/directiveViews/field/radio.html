@@ -18,12 +18,12 @@
         <div ng-repeat="option in field.fieldOptions" class="row-fluid">
             <label class="btn col-md-4 col-xs-12 col-sm-12"
                     style="margin: 0.5em; padding-left:30px"
-					ng-click="setActiveField(field._id, index, true)"
+										ng-click="$root.setActiveField(field._id, index, true)"
                     ng-class="{activeBtn: field.fieldValue == field.fieldOptions[$index].option_value}">
-				<input ng-style="{'color': design.colors.answerColor, 'border-color': design.colors.answerColor}"
+								<input ng-style="{'color': design.colors.answerColor, 'border-color': design.colors.answerColor}"
                     type="radio" class="focusOn"
-				    ng-focus="setActiveField(field._id, index, true)"
-				    value="{{option.option_value}}"
+				    				ng-focus="setActiveField(field._id, index, true)"
+				    				value="{{option.option_value}}"
                     ng-model="field.fieldValue"
                     ng-model-options="{ debounce: 250 }"
                     ng-required="field.required"
@@ -41,10 +41,9 @@
 			<button
 				ng-disabled="!field.fieldValue || forms.myForm.{{field.fieldType}}{{$index}}.$invalid"
 				ng-style="{'background-color':design.colors.buttonColor, 'color':design.colors.buttonTextColor}"
-        		ng-click="$root.nextField()"
+        ng-click="$root.nextField()"
 				style="float: left;"
 				class="btn">
-
 				{{ 'OK' | translate }} <i class="fa fa-check"></i>
 			</button>
 	</div>

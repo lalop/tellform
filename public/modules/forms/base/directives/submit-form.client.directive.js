@@ -112,14 +112,16 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 					}
 				};
 
-                $scope.setActiveField = $rootScope.setActiveField = function(field_id, field_index, animateScroll) {
+        $scope.setActiveField = $rootScope.setActiveField = function(field_id, field_index, animateScroll) {
 
-                    if($scope.selected === null || $scope.selected._id === field_id){
+          if($scope.selected === null || $scope.selected._id === field_id){
+            $scope.selected.index = parseInt(field_index);
 						return;
-		    		}
+		    	}
 
-                    $scope.selected._id = field_id;
-                    $scope.selected.index = parseInt(field_index);
+          $scope.selected._id = field_id;
+
+          $scope.selected.index = parseInt(field_index);
 
 					computeAdvancement();
 
@@ -157,6 +159,7 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
         };
 
         $rootScope.nextField = $scope.nextField = function(field){
+
           if(field && field.fieldType === 'yes_no') {
             // yes no question #fix for iphone
             $scope.selected.index = 0;
@@ -171,7 +174,6 @@ angular.module('forms').directive('submitFormDirective', ['$http', 'TimeCounter'
 					} else if($scope.myform.visible_form_fields[0].fieldType === 'yes_no'){
             $scope.selected.index = $scope.selected.index || 1;
           }
-
 					var selected_index, selected_id;
 
 					if($scope.selected.index < $scope.myform.visible_form_fields.length-1){
